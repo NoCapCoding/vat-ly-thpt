@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Laboratory - Log in</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container .error-message {
+            color: #d8000c;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .container .toggle-link {
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="form-container">
+    <h1 id="form-title">Đăng nhập</h1>
+    <input type="text" id="username" placeholder="Tên đăng nhập">
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <div class="error-message" id="error-message"></div>
+    <button id="form-button" onclick="handleSubmit()">Đăng nhập</button>
+    <p id="toggle-text">Chưa có tài khoản? <span class="toggle-link" onclick="toggleForm()">Đăng ký ngay</span></p>
+</div>
+
+<script>
+    let isLogin = true;
+
+    function toggleForm() {
+        isLogin = !isLogin;
+        document.getElementById('form-title').textContent = isLogin ? 'Đăng nhập' : 'Đăng ký';
+        document.getElementById('form-button').textContent = isLogin ? 'Đăng nhập' : 'Đăng ký';
+        document.getElementById('toggle-text').innerHTML = isLogin 
+            ? 'Chưa có tài khoản? <span class="toggle-link" onclick="toggleForm()">Đăng ký ngay</span>'
+            : 'Đã có tài khoản? <span class="toggle-link" onclick="toggleForm()">Đăng nhập</span>';
+        document.getElementById('error-message').style.display = 'none';
+    }
+
+    function handleSubmit() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('error-message');
+
+        if (isLogin) {
+            const storedPassword = localStorage.getItem(username);
+            if (storedPassword && storedPassword === password) {
+                localStorage.setItem('loggedInUser', username);
+                window.location.href = 'Menu_login.html';
+            } else {
+                errorMessage.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng!';
+                errorMessage.style.display = 'block';
+            }
+        } else {
+            if (localStorage.getItem(username)) {
+                errorMessage.textContent = 'Tên đăng nhập đã tồn tại!';
+                errorMessage.style.display = 'block';
+            } else {
+                localStorage.setItem(username, password);
+                alert('Đăng ký thành công!');
+                toggleForm();
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

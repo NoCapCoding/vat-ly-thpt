@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="Menu.css">
+    <title>Phòng thí nghiệm online</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Trang chủ</a></li>
+            <li id="link1" class="link"><a href="#">Các hoạt động</a></li>
+            <li id="link3" class="link"><a href="#">Về chúng tôi</a></li>
+        </ul>
+        <button class="btn" id="login">Đăng Nhập</button>
+    </nav>
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>TRẢI NGHIỆM CÁC THÍ NGHIỆM NGAY TẠI NHÀ CỦA BẠN</h4>
+            <H1>Xin chào, đây là <span>PHYSICS LABORATORY</span></H1>
+            <p>
+                Nơi chuyển đổi các thử nghiệm thực tế thành mô phỏng và giải quyết ngay lập tức mọi thắc mắc và nghi ngờ của các bạn.
+            </p>
+            <button class="btn" id="startButton">Bắt Đầu</button>
+        </div>
+        <div class="image">
+            <img src="header.png">
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="header">CÁC HOẠT ĐỘNG</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="ri-money-dollar-box-line"></i></span>
+                <h4>Lớp 10</h4>
+                <p>
+                    Nội dung....
+                </p>
+                <a href="Login/Login.html">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="card">
+                <span><i class="ri-bug-line"></i></span>
+                <h4>Lớp 11</h4>
+                <p>
+                    Nội dung...!
+                </p>
+                <a href="Login/Login.html">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="card">
+                <span><i class="ri-history-line"></i></span>
+                <h4>Lớp 12</h4>
+                <p>
+                    Nội dung....!                
+                </p>
+                <a href="Login/Login.html">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="card">
+                <span><i class="ri-shake-hands-line"></i></span>
+                <h4>Tổng hợp công thức</h4>
+                <p>
+                    Nội dung....
+                </p>
+                <a href="Login/Login.html">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="logo.png">
+            </div>
+            <p>
+                18 Đ. Lê Thúc Hoạch, Phú Thọ Hoà, Tân Phú, Hồ Chí Minh
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>About Us</h4>
+            <a href="#">Blogs</a>
+            <a href="#">Channels</a>
+            <a href="#">Sponsors</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privicy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Copyright © 2024 Physics Laboratory. All Rights Reserved.
+    </div>
+
+
+    <script src="Menu.js"></script>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            window.location.href = 'Login/Login.html';
+        });
+        document.getElementById('login').addEventListener('click', function() {
+            window.location.href = 'Login/Login.html';
+        });
+    </script>
+</body>
+
+</html>

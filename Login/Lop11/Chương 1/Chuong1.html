@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Chuong1.css">
+    <title>Trang Web</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+            color: white;
+        }
+        .header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .header a:hover {
+            color: #ddd;
+        }
+        .menu {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: calc(100vh - 70px);
+        }
+        .menu a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #ddd;
+        }
+        .content {
+            width: 80%;
+            padding: 20px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+        .content div {
+            display: none;
+        }
+        .content div.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Trang chủ</a></li>
+            <li id="link1" class="link"><a href="#">Các hoạt động</a></li>
+            <li id="link2" class="link"><a href="#">Tư bản</a></li>
+            <li id="link3" class="link"><a href="#">Về chúng tôi</a></li>
+        </ul>
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="default-avatar.png" alt="User Avatar" class="avatar">
+                <span class="username">Tên Người Dùng</span>
+                <i class="ri-arrow-down-s-line" id="toggleMenu"></i>
+            </div>
+            <div class="user-menu-content" id="menuContent">
+                <a href="#">Tài khoản của tôi</a>
+                <a href="#">Lịch sử học</a>
+                <a href="#" id="logoutLink">Đăng xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="menu">
+        <a href="#" onclick="showContent('lythuyet')">Lý thuyết</a>
+        <a href="#" onclick="showContent('thnghiem')">Thí nghiệm</a>
+    </div>
+
+    <div class="content">
+        <div id="lythuyet" class="active">
+            <h2>Nội dung Lý thuyết</h2>
+            <p>Đây là nội dung của phần Lý thuyết.</p>
+        </div>
+        <div id="thnghiem">
+            <h2>Nội dung Thí nghiệm</h2>
+            <p>Đây là nội dung của phần Thí nghiệm.</p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id) {
+            const contents = document.querySelectorAll('.content div');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

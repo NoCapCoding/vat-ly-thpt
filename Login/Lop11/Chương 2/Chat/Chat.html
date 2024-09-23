@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mạng Xã Hội</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #15202B;
+            color: #E1E8ED;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1DA1F2;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #192734;
+            border-radius: 8px;
+        }
+        .post-form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .post-form textarea {
+            background-color: #22303C;
+            color: #E1E8ED;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .post-form button {
+            align-self: flex-end;
+            background-color: #17BF63;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .post {
+            border-bottom: 1px solid #38444D;
+            padding: 10px 0;
+        }
+        .post img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .interaction {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .interaction button {
+            background-color: transparent;
+            color: #1DA1F2;
+            border: none;
+            cursor: pointer;
+        }
+        .comment-section {
+            margin-top: 10px;
+            display: none;
+        }
+        .comment {
+            border-top: 1px solid #38444D;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mạng Xã Hội</h1>
+</header>
+
+<div class="container">
+    <div class="post-form">
+        <textarea id="postContent" placeholder="What is happening?!"></textarea>
+        <button onclick="addPost()">Post</button>
+    </div>
+    <div id="postList"></div>
+</div>
+
+<script>
+    function addPost() {
+        const content = document.getElementById('postContent').value;
+        if (content.trim()) {
+            const postList = document.getElementById('postList');
+            const newPost = document.createElement('div');
+            newPost.classList.add('post');
+            newPost.innerHTML = `
+                <p>${content}</p>
+                ${interactionButtons()}
+                <div class="comment-section">
+                    <textarea placeholder="Viết bình luận..."></textarea>
+                    <button onclick="addComment(this)">Gửi</button>
+                    <div class="comment-list"></div>
+                </div>
+            `;
+            postList.prepend(newPost);
+            document.getElementById('postContent').value = "";
+        }
+    }
+
+    function interactionButtons() {
+        return `
+            <div class="interaction">
+                <button onclick="likePost(this)">Thích <span>0</span></button>
+                <button onclick="toggleComment(this)">Bình luận</button>
+            </div>
+        `;
+    }
+
+    function likePost(button) {
+        const likeSpan = button.querySelector('span');
+        let likeCount = parseInt(likeSpan.textContent);
+        likeCount += 1;
+        likeSpan.textContent = likeCount;
+    }
+
+    function toggleComment(button) {
+        const commentSection = button.parentElement.nextElementSibling;
+        commentSection.style.display = commentSection.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function addComment(button) {
+        const commentSection = button.parentElement;
+        const commentText = commentSection.querySelector('textarea').value;
+        if (commentText.trim()) {
+            const commentList = commentSection.querySelector('.comment-list');
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.innerHTML = `<p>${commentText}</p>`;
+            commentList.appendChild(newComment);
+            commentSection.querySelector('textarea').value = "";
+        }
+    }
+</script>
+
+</body>
+</html>

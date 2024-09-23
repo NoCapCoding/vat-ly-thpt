@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="Menu_login.css">
+    <title>Phòng thí nghiệm online</title>
+    <style>
+        .user-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-avatar {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-avatar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .user-menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+        }
+
+        .user-menu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .user-menu-content a:last-child {
+            border-bottom: none;
+        }
+
+        .user-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-menu .ri-arrow-down-s-line {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content a {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        .modal-content a:hover {
+            background-color: #ddd;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Trang chủ</a></li>
+            <li id="link1" class="link"><a href="#">Các hoạt động</a></li>
+            <li id="link3" class="link"><a href="#">Về chúng tôi</a></li>
+        </ul>
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="default-avatar.png" alt="User Avatar" class="avatar">
+                <span class="username">Tên Người Dùng</span>
+                <i class="ri-arrow-down-s-line" id="toggleMenu"></i>
+            </div>
+            <div class="user-menu-content" id="menuContent">
+                <a href="#">Tài khoản của tôi</a>
+                <a href="#">Lịch sử học</a>
+                <a href="#" id="logoutLink">Đăng xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>TRẢI NGHIỆM CÁC THÍ NGHIỆM NGAY TẠI NHÀ CỦA BẠN</h4>
+            <h1>Xin chào, đây là <span>PHYSICS LABORATORY</span></h1>
+            <p>
+                Nơi chuyển đổi các thử nghiệm thực tế thành mô phỏng và giải quyết ngay lập tức mọi thắc mắc và nghi
+                ngờ của các bạn.
+            </p>
+            <button class="btn" id="startButton">Bắt Đầu</button>
+        </div>
+        <div class="image">
+            <img src="header.png" alt="Header Image">
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="header">CÁC HOẠT ĐỘNG</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="ri-money-dollar-box-line"></i></span>
+                <h4>Lớp 10</h4>
+                <p>
+                    Nội dung....
+                </p>
+                <button class="btn join-now" data-class="Lớp 10">Join Now <i class="ri-arrow-right-line"></i></button>
+            </div>
+            <div class="card">
+                <span><i class="ri-bug-line"></i></span>
+                <h4>Lớp 11</h4>
+                <p>
+                    Nội dung....
+                </p>
+                <button class="btn join-now" data-class="Lớp 11">Join Now <i class="ri-arrow-right-line"></i></button>
+            </div>
+            <div class="card">
+                <span><i class="ri-history-line"></i></span>
+                <h4>Lớp 12</h4>
+                <p>
+                    Nội dung....!                
+                </p>
+                <button class="btn join-now" data-class="Lớp 12">Join Now <i class="ri-arrow-right-line"></i></button>
+            </div>
+            <div class="card">
+                <span><i class="ri-shake-hands-line"></i></span>
+                <h4>Tổng hợp công thức</h4>
+                <p>
+                    Nội dung....
+                </p>
+                <button class="btn join-now" data-class="Tổng hợp công thức">Join Now <i class="ri-arrow-right-line"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="logo.png" alt="Footer Logo">
+            </div>
+            <p>
+                18 Đ.Lê Thúc Hoạch, p.Phú Thọ Hòa, q.Tân Phú, Hồ Chí Minh
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-facebook-line"></i></a>
+            </div>
+        </div>
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Business</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>About Us</h4>
+            <a href="#">Blogs</a>
+            <a href="#">Channels</a>
+            <a href="#">Sponsors</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Copyright © 2024 Physics Laboratory. All Rights Reserved.
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>Chọn một tùy chọn:</h3>
+            <div id="optionsContainer"></div>
+            <button class="close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="Menu_login.js"></script>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function () {
+            window.location.href = 'Login/Login.html';
+        });
+
+        document.getElementById('toggleMenu').addEventListener('click', function () {
+            const menuContent = document.getElementById('menuContent');
+            if (menuContent.style.display === 'block') {
+                menuContent.style.display = 'none';
+            } else {
+                menuContent.style.display = 'block';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const userInfo = document.querySelector('.user-avatar');
+            const username = localStorage.getItem('loggedInUser');
+
+            if (username) {
+                userInfo.querySelector('.username').textContent = username;
+            } else {
+                window.location.href = 'Login/Login.html';
+            }
+        });
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.ri-arrow-down-s-line')) {
+                const dropdowns = document.getElementsByClassName("user-menu-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === 'block') {
+                        openDropdown.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        document.getElementById('logoutLink').addEventListener('click', function () {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'Login/Login.html';
+        });
+
+        const joinButtons = document.querySelectorAll('.join-now');
+        const modal = document.getElementById('modal');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const closeModalButton = document.querySelector('.close-modal');
+
+        const options = {
+            "Lớp 10": ["Lop10/Chương 1/Mô tả chuyển động.html", "Lop10/Chương 2/Chuong2.html", "Lop10/Chương 3/Chuong3.html", "Lop10/Chương 4/Chuong4.html"],
+            "Lớp 11": ["Lop11/Chương 1/Chuong1.html", "Lop11/Chương 2/Sóng.html", "G.html", "H.html"],
+            "Lớp 12": ["I.html", "J.html", "K.html", "L.html"],
+            "Tổng hợp công thức": ["M.html", "N.html", "O.html"],
+            "Gói Cơ Bản": ["P.html", "Q.html", "R.html", "S.html"],
+            "Gói VIP": ["T.html", "U.html", "V.html", "W.html"],
+            "Gói SVIP": ["X.html", "Y.html", "Z.html", "AA.html"]
+        };
+
+        joinButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const className = this.getAttribute('data-class');
+                const classOptions = options[className] || [];
+                optionsContainer.innerHTML = classOptions.map((option, index) => `<a href="${option}">Chương ${index + 1}</a>`).join('');
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModalButton.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

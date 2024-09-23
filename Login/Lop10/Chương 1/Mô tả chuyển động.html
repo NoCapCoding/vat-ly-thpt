@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mô tả chuyển động- Lớp 10</title>
+    <link rel="stylesheet" href="Mô tả chuyển động.css">
+    <style>
+        .user-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-avatar {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-avatar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .user-menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+        }
+
+        .user-menu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .user-menu-content a:last-child {
+            border-bottom: none;
+        }
+
+        .user-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-menu .ri-arrow-down-s-line {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Trang chủ</a></li>
+            <li id="link1" class="link"><a href="#">Các hoạt động</a></li>
+            <li id="link3" class="link"><a href="#">Về chúng tôi</a></li>
+        </ul>
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="default-avatar.png" alt="User Avatar" class="avatar">
+                <span class="username">Tên Người Dùng</span>
+                <i class="ri-arrow-down-s-line" id="toggleMenu"></i>
+            </div>
+            <div class="user-menu-content" id="menuContent">
+                <a href="#">Tài khoản của tôi</a>
+                <a href="#">Lịch sử học</a>
+                <a href="#" id="logoutLink">Đăng xuất</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="selection content">
+            <h1 style="color:white;">Mô tả chuyển động</h1>
+            <div>
+                <h2>Tốc độ, độ dịch chuyển và vận tốc</h2>
+                <p><strong>Tốc độ:</strong> Tốc độ trung bình là đại lượng đặc trưng cho độ nhanh, châm của chuyển động</p>
+                <p><strong>Tốc độ tức thời:</strong> Tốc độ trung bình trong một thời gian rất ngắn</p>
+                <p><strong>Đơn vị:</strong> mét trên giây (m/s)</p>
+
+                <h2>Quãng đường và độ dịch chuyển</h2>
+                <p><strong>Độ dịch chuyển:</strong> Khoảng cách mà vật di chuyển theo một hướng xác định</p>
+                <p><strong>Điểm khác nhau giữa quãng đường và độ dịch chuyển:</strong></p>
+                <table>
+                    <tr>
+                        <td><strong>Quãng đường</strong></td>
+                        <td><strong>Độ dịch chuyển</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Đại lượng vô hướng</td>
+                        <td>Đại lượng vectơ</td>
+                    </tr>
+                    <tr>
+                        <td>Chỉ được đặc trưng bởi độ lớn</td>
+                        <td>Đặc trưng bởi độ lớn và hướng</td>
+                    </tr>
+                </table>
+
+                <h2>Vận tốc</h2>
+                <p>• Là tốc độ di chuyển của một vật theo một hướng cụ thể</p>
+                <p>• Là đại lượng vectơ, tốc độ là đại lượng vô hướng</p>
+                <p>• Nếu trong khoảng thời gian rất ngắn vận tốc được gọi là vận tốc tức thời</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="camera-icon" onclick="openMeetingInterface()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/video-call.png">
+    </div>
+    <div class="chat-icon" onclick="openChat()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png">
+    </div>
+    <script src="Mô tả chuyển động.js"></script>
+</body>
+
+</html>

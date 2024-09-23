@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sóng Cơ Học - Lớp 11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="Sóng.css">
+    <style>
+        .user-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-avatar {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-avatar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .user-menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+        }
+
+        .user-menu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .user-menu-content a:last-child {
+            border-bottom: none;
+        }
+
+        .user-menu-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .user-menu .ri-arrow-down-s-line {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="logo.png" alt="Logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Trang chủ</a></li>
+            <li id="link1" class="link"><a href="#">Các hoạt động</a></li>
+            <li id="link2" class="link"><a href="#">Tư bản</a></li>
+            <li id="link3" class="link"><a href="#">Về chúng tôi</a></li>
+        </ul>
+        <div class="user-menu">
+            <div class="user-avatar">
+                <img src="default-avatar.png" alt="User Avatar" class="avatar">
+                <span class="username">Tên Người Dùng</span>
+                <i class="ri-arrow-down-s-line" id="toggleMenu"></i>
+            </div>
+            <div class="user-menu-content" id="menuContent">
+                <a href="#">Tài khoản của tôi</a>
+                <a href="#">Lịch sử học</a>
+                <a href="#" id="logoutLink">Đăng xuất</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section content">
+            <h1 style="color: white;">Mô Phỏng Sóng Cơ Học - Lớp 11</h1>
+            <div>
+                <h2>Định Nghĩa Các Loại Sóng Cơ Học</h2>
+                <p><strong>Sóng dọc:</strong> Sóng dọc là loại sóng trong đó sự dao động xảy ra dọc theo phương truyền sóng. Một ví dụ phổ biến của sóng dọc là sóng âm.</p>
+                <p><strong>Sóng ngang:</strong> Sóng ngang là loại sóng trong đó sự dao động xảy ra vuông góc với phương truyền sóng. Một ví dụ phổ biến của sóng ngang là sóng trên mặt nước.</p>
+
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="amplitude">Biên độ (A):</label>
+                        <input type="range" id="amplitude" name="amplitude" min="10" max="100" value="50">
+                        <span id="amplitude-value">50</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="frequency">Tần số (f):</label>
+                        <input type="range" id="frequency" name="frequency" min="0.1" max="2" value="0.7" step="0.1">
+                        <span id="frequency-value">0.7</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="wavelength">Bước sóng (λ):</label>
+                        <input type="range" id="wavelength" name="wavelength" min="50" max="200" value="100">
+                        <span id="wavelength-value">100</span>
+                    </div>
+                </div>
+
+                <div class="graph-container">
+                    <canvas id="waveCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="camera-icon" onclick="openMeetingInterface()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/video-call.png" alt="camera icon">
+    </div>
+    
+    <div class="chat-icon" onclick="openChat()">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/chat.png" alt="chat icon">
+    </div>
+
+    <div class="meeting-interface" id="meeting-interface">
+        <div class="meeting-box">
+            <video id="localVideo" autoplay></video>
+            <div class="meeting-controls">
+                <button onclick="startMeeting()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5685/5685349.png" alt="join icon">
+                </button>
+                <button onclick="toggleCamera()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/video-call.png" alt="camera icon">
+                </button>
+                <button onclick="toggleMic()">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/microphone.png" alt="mic icon">
+                </button>
+                <button onclick="closeMeetingInterface()">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7046/7046204.png" alt="close icon">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Sóng.js"></script>
+</body>
+
+</html>
